@@ -20,4 +20,14 @@ const pool = new Pool({
   port: process.env.DB_PORT,
 });
 
+// Test connection to DB and display success or failiure in the consolelele
+async function testConnection() {
+  try {
+    const result = await pool.query("SELECT 1");
+    console.log("DB connected!");
+  } catch (err) {
+    console.error("DB connection failed:", err.message);
+  }
+}
+
 module.exports = pool;
