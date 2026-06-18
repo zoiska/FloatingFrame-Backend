@@ -8,6 +8,6 @@ exports.getAllQR = async () => {
 
 // returns the devices associated with the provided qr code
 exports.getSingleQR = async (id) => {
-  const result = await db.query("SELECT * FROM computers WHERE qr_code_id = $1", [id]);
-  return result.rows;
+  const result = await db.query("SELECT * FROM computers WHERE id = $1", [id]);
+  return result.rows[0];
 };
