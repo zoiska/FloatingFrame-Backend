@@ -4,7 +4,9 @@ const db = require("../db/db");
 exports.getAllAssets = async () => {
   const result = await db.query(`
     SELECT 
+    id,
       'computer' AS type,
+      manufacturer,
       hostname,
       ip_address,
       mac_address,
@@ -22,7 +24,9 @@ exports.getAllAssets = async () => {
     UNION ALL
 
     SELECT 
+    id,
       'monitor' AS type,
+      manufacturer,
       NULL::text AS hostname,
       NULL::inet AS ip_address,
       NULL::macaddr AS mac_address,
@@ -40,7 +44,9 @@ exports.getAllAssets = async () => {
     UNION ALL
 
     SELECT 
+    id,
       'switch' AS type,
+      NULL::text AS manufacturer,
       hostname,
       NULL::inet AS ip_address,
       NULL::macaddr AS mac_address,
@@ -65,7 +71,9 @@ exports.getAssetsByQR = async (id) => {
   const result = await db.query(
     `
     SELECT 
+    id,
       'computer' AS type,
+      manufacturer,
       hostname,
       ip_address,
       mac_address,
@@ -84,7 +92,9 @@ exports.getAssetsByQR = async (id) => {
     UNION ALL
 
     SELECT 
+    id,
       'monitor' AS type,
+      manufacturer,
       NULL::text AS hostname,
       NULL::inet AS ip_address,
       NULL::macaddr AS mac_address,
@@ -103,7 +113,9 @@ exports.getAssetsByQR = async (id) => {
     UNION ALL
 
     SELECT 
+    id,
       'switch' AS type,
+      NULL::text AS manufacturer,
       hostname,
       NULL::inet AS ip_address,
       NULL::macaddr AS mac_address,
