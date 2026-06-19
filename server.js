@@ -1,12 +1,11 @@
-import fs from "fs";
-import https from "https";
-
 // Starting point for our Server
 const app = require("./src/app");
+const fs = require("fs");
+const https = require("https");
 
 const options = {
-  key: fs.readFileSync("./certs/key.pem"),
-  cert: fs.readFileSync("./certs/cert.pem"),
+  key: fs.readFileSync("./certs/localhost+1-key.pem"),
+  cert: fs.readFileSync("./certs/localhost+1.pem"),
 };
 
 const PORT = process.env.PORT || 3000;
