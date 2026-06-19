@@ -1,8 +1,15 @@
 // Starting point for our Server
 const app = require("./src/app");
+const fs = require("fs");
+const https = require("https");
+
+const options = {
+  key: fs.readFileSync("./certs/localhost+1-key.pem"),
+  cert: fs.readFileSync("./certs/localhost+1.pem"),
+};
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Server läuft auf Port ${PORT}`);
+https.createServer(options, app).listen(PORT, () => {
+  console.log("HTTPS server läuft");
 });
