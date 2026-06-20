@@ -6,7 +6,16 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://localhost:5173",
+      "https://192.168.1.74:5173",
+      "https://192.168.0.67:5173",
+      "https://192.168.178.9",
+    ],
+  }),
+);
 app.use(express.json());
 
 // Added routes
