@@ -4,8 +4,8 @@ const fs = require("fs");
 const https = require("https");
 
 const options = {
-  key: fs.readFileSync("./localhost+1-key.pem"),
-  cert: fs.readFileSync("./localhost+1.pem"),
+  key: fs.readFileSync("./localhost-key.pem"),
+  cert: fs.readFileSync("./localhost.pem"),
 };
 
 const PORT = process.env.PORT || 3000;
